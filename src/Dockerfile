@@ -6,9 +6,8 @@ RUN apt-get update
 RUN apt-get install ffmpeg -y
 
 
-COPY ./src/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ./src ./src
-
-ENTRYPOINT python ./src/server.py
+COPY . .
+ENTRYPOINT python ./server.py

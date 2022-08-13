@@ -3,20 +3,13 @@ version: '3.1'
 services:
   
 
-  RTP:
-    build: .
-    image: RTP
-    command: yarn start
-    expose:
-      - 8080
+  real-time-panorama:
+    image: cloud.canister.io:5000/skyview/real-time-panorama
+    build:
+      context: ./src
+    ports:
+      - "8080:8080"
 
-
-  RTP-tests:
-    image: RTP
-    environment:
-      APP_URL: http://RTP:8000
-    depends_on:
-      - RTP
 
 networks:
   default:

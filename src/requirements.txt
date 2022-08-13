@@ -1,4 +1,5 @@
 opencv-python
 uvloop
 aiortc
+kafka-python
 vidgear[asyncio]
