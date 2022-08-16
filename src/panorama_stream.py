@@ -71,7 +71,15 @@ def stitch_overlapping_frames(list_of_frames, img_offsets):
             break
             
         i = i + 1
+    stitched_frame = increase_brightness(stitched_frame, 150, 100)
     return stitched_frame  
+
+def increase_brightness(img, brightness=50, contrast=30):
+    img = np.int16(img)
+    img = img * (contrast/127+1) - contrast + brightness
+    img = np.clip(img, 0, 255)
+    img = np.uint8(img)
+    return img
 
 def create_kafka_consumer():
     kafka_server = os.environ['KAFKA_URL']
